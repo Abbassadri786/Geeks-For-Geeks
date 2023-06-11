@@ -50,19 +50,17 @@ class Solution
             temp = temp -> next;
         }
         temp = head;
-        while(temp != NULL){
-            while(zero--){
-                temp -> data = 0;
-                temp = temp -> next;
-            }
-            while(one--){
-                temp -> data = 1;
-                temp = temp -> next;
-            }
-            while(two--){
-                temp -> data = 2;
-                temp = temp -> next;
-            }
+        while(zero--){
+            temp -> data = 0;
+            temp = temp -> next;
+        }
+        while(one--){
+            temp -> data = 1;
+            temp = temp -> next;
+        }
+        while(two--){
+            temp -> data = 2;
+            temp = temp -> next;
         }
         
         return head;
