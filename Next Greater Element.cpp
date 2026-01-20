@@ -8,6 +8,7 @@ class Solution {
         st.push(arr[n-1]);
 
         for(int i = n-2; i >= 0; i--) {
+          // pop until you get a greater one
             while(!st.empty() && st.top() <= arr[i]) {
                 st.pop();
             }
