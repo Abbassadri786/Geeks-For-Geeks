@@ -1,40 +1,38 @@
 class Solution {
-public:
-    
-    bool isPossibleSol(vector<int> &stalls, int k, int mid){
-        int c = 1;
-        int pos = stalls[0];
-        
-        for(int i=1; i<stalls.size(); i++){
-            if(stalls[i] - pos >= mid){
-                c++;
-                pos = stalls[i];
-            }
-            if(c==k){
-                return true;
+  private:
+    bool isPossible(vector<int> &stalls, int k, int dist){
+        int cntCows = 1;          // first cow placed
+        int last = stalls[0];
+
+        for(int i = 1; i < stalls.size(); i++){
+            if(stalls[i] - last >= dist){
+                cntCows++;
+                last = stalls[i];
             }
         }
-        return false;
+        return cntCows >= k;
     }
 
-    int solve(int n, int k, vector<int> &stalls) {
-        sort(stalls.begin(),stalls.end());
-        int start = 0;
-        int end = stalls[stalls.size()-1]-stalls[0];
-        int ans = -1;
-        
-        while(start <= end){
-            int mid = (start+end)>>1;
-            if(isPossibleSol(stalls,k,mid)){
-                ans = mid;
-                start = mid+1;
+  public:
+    int aggressiveCows(vector<int> &stalls, int k) {
+        sort(stalls.begin(), stalls.end());  // 🔴 REQUIRED
+
+        int n = stalls.size();
+        int low = 1;                          // minimum possible distance
+        int high = stalls[n-1] - stalls[0];  // maximum possible distance
+        int ans = 0;
+
+        while(low <= high){
+            int mid = (high + low) / 2;
+
+            if(isPossible(stalls, k, mid)){
+                ans = mid;        // store valid answer
+                low = mid + 1;    // try for bigger distance
             }
             else{
-                end = mid-1;
+                high = mid - 1;   // reduce distance
             }
         }
         return ans;
-    
-        // Write your code here
     }
 };
