@@ -1,3 +1,4 @@
+//sliding window naturally counts at most K in O(n). Directly enforcing exactly K breaks the monotonic window property, making it harder to maintain efficiently.
 // Approach : atmost(arr, k) - atMost(arr, k-1)
 class Solution {
   private:
