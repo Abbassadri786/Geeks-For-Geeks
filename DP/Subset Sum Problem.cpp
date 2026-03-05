@@ -36,3 +36,38 @@ public:
         return helper(arr, sum, n);
     }
 };
+
+class Solution {
+  public:
+    // Approach 2: Bottom Up Approach filling Memo table( Iterative Sol O(n²))
+    bool isSubsetSum(vector<int>& arr, int sum) {
+        int n = arr.size();
+        int dp[n+1][sum+1];
+        
+        // Step 1 : Initialize Base condition in Memo Table
+        for(int i=0; i < n+1; i++){
+            for(int j=0; j < sum+1; j++){
+                if(i == 0){
+                    dp[i][j] = false;
+                }
+                if(j == 0){
+                    dp[i][j] = true;
+                }
+            }
+        }
+        
+        //Step 2: Fill whole memo table using reccursive core logic replacing n -> i and sum -> j
+        for(int i=1; i< n+1; i++){
+            for(int j=1; j<sum+1; j++){
+                if(arr[i-1] <= j){
+                    dp[i][j] = dp[i-1][j - arr[i-1]] || dp[i-1][j];
+                }
+                else{
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        
+        return dp[n][sum];
+    }
+};
