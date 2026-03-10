@@ -34,6 +34,6 @@ class Solution {
             }
         }
         
-        return ans;
+        return reverse(ans.begin(), ans.end());
     }
 };
