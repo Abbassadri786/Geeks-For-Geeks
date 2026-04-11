@@ -9,7 +9,7 @@ class Solution {
         // Ignore negative contributions by taking max with 0
         int left = max(0, maxPathDown(node->left, maxi));
         
-        // Same for right subtree
+        // get max path sum from right subtree
         int right = max(0, maxPathDown(node->right, maxi));
         
         // Case 1: Path passes THROUGH current node
