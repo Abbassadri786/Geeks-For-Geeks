@@ -1,4 +1,5 @@
 class Solution {
+// Solve it using Sliding Window technique for at most K elements
   public:
     int characterReplacement(string& s, int k) {
         int n = s.length();
