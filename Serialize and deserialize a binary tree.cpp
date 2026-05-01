@@ -15,7 +15,7 @@ public:
 class Solution {
   public:
   
-    // Serialize using BFS (level-order)
+    // Serialize using BFS (level-order) store the traveral in vector
     vector<int> serialize(Node *root) {
         vector<int> ans;
         if(!root) return ans;
