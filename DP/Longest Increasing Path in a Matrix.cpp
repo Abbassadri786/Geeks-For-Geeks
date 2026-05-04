@@ -1,3 +1,4 @@
+//Use DFS + memoization to compute longest increasing path from each cell, avoiding recomputation.
 class Solution {
     int rows, cols;
     vector<vector<int>> cache;
